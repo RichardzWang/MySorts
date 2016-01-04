@@ -88,6 +88,26 @@ public class MySorts {
 	System.out.println( "ArrayList bobo after sorting:\n" + bobo );
 	System.out.println( bobo );
 
+	  ArrayList hed = new ArrayList<Integer>();
+	  hed.add(7);
+	  hed.add(1);
+	  hed.add(5);
+	  hed.add(12);
+	  hed.add(3);
+	  System.out.println( "ArrayList hed before sorting:\n" + hed );
+	  ArrayList hedSorted = insertionSort( hed );
+	  System.out.println( "sorted version of ArrayList hed:\n" 
+	  + hedSorted );
+	  System.out.println( "ArrayList hed after sorting:\n" + hed );
+
+	  ArrayList popo = populate( 10, 1, 1000 );
+	  System.out.println( "ArrayList popo before sorting:\n" + popo );
+	  ArrayList popoSorted = insertionSort( popo );
+	  System.out.println( "sorted version of ArrayList popo:\n" 
+	  + popoSorted );
+	  System.out.println( "ArrayList popo after sorting:\n" + popo );
+	  System.out.println( popo );
+
 
     }
 }
