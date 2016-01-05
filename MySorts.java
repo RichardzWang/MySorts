@@ -95,14 +95,14 @@ public class MySorts {
 	  hed.add(12);
 	  hed.add(3);
 	  System.out.println( "ArrayList hed before sorting:\n" + hed );
-	  ArrayList hedSorted = insertionSort( hed );
+	  ArrayList hedSorted = InsertionSort.insertionSort( hed );
 	  System.out.println( "sorted version of ArrayList hed:\n" 
 	  + hedSorted );
 	  System.out.println( "ArrayList hed after sorting:\n" + hed );
 
 	  ArrayList popo = populate( 10, 1, 1000 );
 	  System.out.println( "ArrayList popo before sorting:\n" + popo );
-	  ArrayList popoSorted = insertionSort( popo );
+	  ArrayList popoSorted = InsertionSort.insertionSort( popo );
 	  System.out.println( "sorted version of ArrayList popo:\n" 
 	  + popoSorted );
 	  System.out.println( "ArrayList popo after sorting:\n" + popo );
