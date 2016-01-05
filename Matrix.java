@@ -1,3 +1,8 @@
+// Richard Wang
+// APCS1 pd9
+// HW54 -- Red vs Blue
+// 2016-1-5
+
 /*====================================
   class Matrix -- models a square matrix
 
@@ -40,7 +45,7 @@ public class Matrix {
 
     //return true if this matrix is empty, false otherwise
     private boolean isEmpty( int r, int c ) {
-	return (matrix[r][c]==null);
+	return (matrix[r][c]==null); //null is a primitive
     }
 
 
@@ -56,12 +61,19 @@ public class Matrix {
     //return String representation of this matrix
     // (make it look like a matrix)
     public String toString() {
+	String retStr = "";
 	for (Object[] f : matrix) {
-	    for (Object s : f) {
-		System.out.print(s) + " ";
+	    for (int c = 0; c < f.length; c++) {
+		if (c != f.length - 1) {
+		    retStr += (f[c] + " ");
+		}
+		else {
+		    retStr += (f[c]);
+		}
 	    }
-	    System.out.println();
+	    retStr += "\n";
 	}
+	return retStr;
     }
 
 
@@ -69,7 +81,20 @@ public class Matrix {
     //criteria for equality: matrices have identical dimensions,
     // and identical values in each slot
     public boolean equals( Object rightSide ) {
-
+	boolean ret = this == rightSide;
+	if (!ret) {
+	    ret = rightSide instanceof Matrix && ((Matrix) rightSide).size() == this.size(); 
+	    if (ret) {
+		for (int f = 0; f < ((Matrix) rightSide).size(); f++) {
+		    for (int s = 0; s < ((Matrix) rightSide).size(); s++) {
+			if (matrix[f][s] != ((Matrix) rightSide).get(f, s)) {
+			    return false; //returns as soon as one element does not match
+			}
+		    }
+		}
+	    }
+	}
+	return ret;
     }
 
 
@@ -78,7 +103,9 @@ public class Matrix {
     //row values increase going down
     //column value increase L-to-R
     public void swapColumns( int c1, int c2  ) {
-
+	for (int r = 0; r < matrix.length; r++) {
+	    matrix[r][c1] = set(r, c2, matrix[r][c1]); //Passing value, not Object
+	}
     }
 
 
@@ -87,13 +114,50 @@ public class Matrix {
     //row values increase going down
     //column value increase L-to-R
     public void swapRows( int r1, int r2  ) {
-
+	for (int c = 0; c < matrix.length; c++) {
+	    matrix[r1][c] = set(r2, c, matrix[r1][c]);
+	}
     }
 
 
     //main method for testing
     public static void main( String[] args ) {
+	Matrix test1 = new Matrix();
+	Matrix test2 = new Matrix();
+	Matrix test3 = new Matrix(3);
+	System.out.println(test1.equals(test2));
+	System.out.println("Should return true");
+	System.out.println();
 
+	int p = 0;
+	for (int c = 0; c < test1.size(); c++) {
+	    for (int s = 0; s < test1.size(); s++) {
+		test1.set(c, s, p++);
+	    }
+	}
+	System.out.println(test1);
+	System.out.println(test1.equals(test2));
+	System.out.println("Should return false");
+	System.out.println();
+
+	test1.swapRows(0, 1);
+	System.out.println(test1);
+	System.out.println();
+
+	test1.swapColumns(0, 1);
+	System.out.println(test1);
+	System.out.println();
+
+	System.out.println(test2);
+	System.out.println(test2.isEmpty(0,0));
+	System.out.println("Should return true");
+	System.out.println();
+
+	System.out.println(test1.equals(test3));
+	System.out.println("Should return false");
+	System.out.println();
+	
+	
     }
 
 }//end class Matrix
