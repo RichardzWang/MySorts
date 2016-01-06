@@ -103,8 +103,13 @@ public class Matrix {
     //row values increase going down
     //column value increase L-to-R
     public void swapColumns( int c1, int c2  ) {
-	for (int r = 0; r < matrix.length; r++) {
-	    matrix[r][c1] = set(r, c2, matrix[r][c1]); //Passing value, not Object
+	if (c1 >= 0 && c1 < matrix.length && c2 >= 0 && c2 < matrix.length) {
+	    for (int r = 0; r < matrix.length; r++) {
+		matrix[r][c1] = set(r, c2, matrix[r][c1]); //Passing value, not Object
+	    }
+	}
+	else {
+	    System.out.println("Index out of bound");
 	}
     }//O(N)
 
@@ -114,11 +119,16 @@ public class Matrix {
     //row values increase going down
     //column value increase L-to-R
     public void swapRows( int r1, int r2  ) {
-	for (int c = 0; c < matrix.length; c++) {
+	if (r1 >= 0 && r1 < matrix.length && r2 >= 0 && r2 < matrix.length) {
+	    for (int c = 0; c < matrix.length; c++) {
 	    matrix[r1][c] = set(r2, c, matrix[r1][c]);
+	    }
+	}
+	else {
+	    System.out.println("Index out of bound");
 	}
     }//O(N)
-
+	
 
     //main method for testing
     public static void main( String[] args ) {
