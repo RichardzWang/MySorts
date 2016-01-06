@@ -22,31 +22,31 @@ public class Matrix {
     //default constructor intializes a DEFAULT_SIZE*DEFAULT_SIZE matrix
     public Matrix( ) {
 	matrix = new Object[DEFAULT_SIZE][DEFAULT_SIZE];
-    }
+    }//O(1)
 
 
     //constructor intializes an a*a matrix
     public Matrix( int a ) {
 	matrix = new Object[a][a];
-    }
+    }//O(1)
 
 
     //return size of this matrix, where size is 1 dimension
     private int size() {
 	return matrix.length;
-    }
+    }//O(1)
 
 
     //return the item at the specified row & column   
     private Object get( int r, int c ) {
 	return matrix[r][c];
-    }
+    }//O(1)
 
 
     //return true if this matrix is empty, false otherwise
     private boolean isEmpty( int r, int c ) {
 	return (matrix[r][c]==null); //null is a primitive
-    }
+    }//O(1)
 
 
     //overwrite item at specified row and column with newVal
@@ -55,7 +55,7 @@ public class Matrix {
 	Object old = matrix[r][c];
 	matrix[r][c] = newVal;
 	return old;
-    }
+    }//O(1)
 
 
     //return String representation of this matrix
@@ -74,7 +74,7 @@ public class Matrix {
 	    retStr += "\n";
 	}
 	return retStr;
-    }
+    }//O(N^2)
 
 
     //override inherited equals method
@@ -95,7 +95,7 @@ public class Matrix {
 	    }
 	}
 	return ret;
-    }
+    }//O(N^2)
 
 
     //swap two columns of this matrix 
@@ -106,7 +106,7 @@ public class Matrix {
 	for (int r = 0; r < matrix.length; r++) {
 	    matrix[r][c1] = set(r, c2, matrix[r][c1]); //Passing value, not Object
 	}
-    }
+    }//O(N)
 
 
     //swap two rows of this matrix 
@@ -117,7 +117,7 @@ public class Matrix {
 	for (int c = 0; c < matrix.length; c++) {
 	    matrix[r1][c] = set(r2, c, matrix[r1][c]);
 	}
-    }
+    }//O(N)
 
 
     //main method for testing
